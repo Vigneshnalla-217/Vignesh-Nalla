@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-obsidian: #09070D;
+  --color-obsidian-surface: #100C16;
+  --color-crimson: #FF557F;
+  --color-violet: #9272FF;
+  --color-magenta: #C44D9E;
+  --color-ivory: #F5F1F7;
+  --color-lavender-muted: #A69EAC;
+}
+
+@layer base {
+  html {
+    background-color: #09070D;
+    color: #F5F1F7;
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+
+  body {
+    background-color: #09070D;
+    color: #F5F1F7;
+    overflow-x: clip;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: rgba(255, 85, 127, 0.28);
+    color: #F5F1F7;
+  }
+}
+
+@keyframes subtleFloat {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0);
+  }
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-subtle-float {
+  animation: subtleFloat 5.5s ease-in-out infinite;
+}
+
+.animate-subtle-float-delayed {
+  animation: subtleFloat 6.5s ease-in-out 1.4s infinite;
+}
+
+.animate-gradient-text {
+  background-size: 200% 200%;
+  animation: gradientFlow 7s ease infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-subtle-float,
+  .animate-subtle-float-delayed,
+  .animate-gradient-text {
+    animation: none;
+  }
+}
+
+/* Custom subtle dark scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09070D;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #231A30;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF557F;
+}
