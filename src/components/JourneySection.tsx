@@ -11,7 +11,7 @@ export function JourneySection() {
 
   return (
     <section id="journey" className="relative py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-8 2xl:max-w-7xl">
         <SectionHeader
           index="02"
           eyebrow="My Journey"

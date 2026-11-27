@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import { portfolioConfig } from '../data/portfolioConfig';
 import { useDeviceCapabilities } from '../hooks/useDeviceCapabilities';
 import { HeroScene3D } from './HeroScene3D';
+import { PortraitDisintegration } from './PortraitDisintegration';
 import { TiltSurface } from './TiltSurface';
 
 export function HeroSection() {
@@ -11,7 +12,6 @@ export function HeroSection() {
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [typedText, setTypedText] = useState<string>(portfolioConfig.personal.typingPhrases[0]);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [imageError, setImageError] = useState(false);
 
   // Typing animation for professional subtitle
   useEffect(() => {
@@ -48,13 +48,13 @@ export function HeroSection() {
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (el) el.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
   };
 
   return (
     <section
       id="home"
-      className="relative flex min-h-screen flex-col justify-center overflow-hidden pt-20 pb-12"
+      className="relative flex min-h-screen flex-col justify-center overflow-x-clip pt-20 pb-12"
     >
       {/* Background radial atmosphere */}
       <div
@@ -65,7 +65,7 @@ export function HeroSection() {
       {/* Interactive Three.js 3D Stage */}
       <HeroScene3D />
 
-      {/* Subtle ambient code syntax accents (desktop only, non-overlapping) */}
+      {/* Subtle ambient code syntax accents (desktop only) */}
       <div
         aria-hidden="true"
         className="pointer-events-none hidden lg:block absolute inset-x-0 top-28 mx-auto max-w-6xl px-8"
@@ -79,8 +79,8 @@ export function HeroSection() {
       </div>
 
       {/* Main Content Container */}
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-5 sm:px-8">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-10">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-8 2xl:max-w-7xl">
+        <div className="grid grid-cols-1 items-center gap-10 sm:gap-12 lg:grid-cols-12 lg:gap-10">
           {/* Left Column: Architectural Typography & Actions */}
           <div className="lg:col-span-7">
             <motion.p
@@ -96,7 +96,7 @@ export function HeroSection() {
               initial={reducedMotion ? false : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-4 font-display text-4xl font-extrabold tracking-tight text-[#F5F1F7] sm:text-6xl lg:text-[4.25rem] lg:leading-[1.03]"
+              className="mt-4 font-display text-[2.1rem] min-[390px]:text-4xl font-extrabold tracking-tight text-[#F5F1F7] sm:text-5xl lg:text-6xl xl:text-[4.25rem] xl:leading-[1.03]"
             >
               <span className="animate-gradient-text bg-gradient-to-r from-[#F5F1F7] via-[#FF557F] to-[#9272FF] bg-clip-text text-transparent">
                 {portfolioConfig.personal.fullName}
@@ -156,7 +156,7 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Right Column: Studio Portrait Frame + Floating Highlights */}
+          {/* Right Column: Scroll-Disintegrating Studio Portrait + Floating Highlights */}
           <motion.div
             initial={reducedMotion ? false : { opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -171,76 +171,38 @@ export function HeroSection() {
                   className="pointer-events-none absolute -inset-px -z-10 rounded-2xl bg-gradient-to-br from-[#FF557F]/35 via-transparent to-[#9272FF]/35 opacity-60 blur-sm"
                 />
 
-                {/* Portrait Image Slot */}
-                <div className="relative aspect-[4/4.6] w-full overflow-hidden rounded-xl bg-[#EAE6F0]">
-                  {!imageError ? (
-                    <img
-                      src={portfolioConfig.personal.profilePhoto.src}
-                      alt={portfolioConfig.personal.profilePhoto.alt}
-                      onError={() => setImageError(true)}
-                      referrerPolicy="no-referrer"
-                      className="h-full w-full object-cover object-top transition-transform duration-500 hover:scale-[1.02]"
-                    />
-                  ) : (
-                    <div className="flex h-full w-full flex-col items-center justify-center bg-[#100C16] p-6 text-center">
-                      <span className="font-display text-4xl font-bold text-[#FF557F]">
-                        {portfolioConfig.brand.monogram}
-                      </span>
-                      <span className="mt-2 text-sm text-[#A69EAC]">
-                        {portfolioConfig.personal.displayName}
-                      </span>
-                    </div>
-                  )}
-
-                  {/* Measured bottom scrim for legibility and seamless dark integration */}
-                  <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#09070D] via-[#09070D]/60 to-transparent"
-                  />
-
-                  {/* Portrait Caption inside scrim */}
-                  <div className="absolute inset-x-4 bottom-4 flex items-end justify-between gap-2">
-                    <div>
-                      <p className="font-display text-base font-semibold text-[#F5F1F7]">
-                        {portfolioConfig.personal.displayName}
-                      </p>
-                      <p className="text-xs text-[#A69EAC]">
-                        {portfolioConfig.brand.domain}
-                      </p>
-                    </div>
-                    <span className="font-mono text-xs text-[#FF557F]">
-                      {portfolioConfig.brand.monogram}
-                    </span>
-                  </div>
-                </div>
+                {/* Cinematic Scroll-Linked Particle Portrait */}
+                <PortraitDisintegration
+                  src={portfolioConfig.personal.profilePhoto.src}
+                  alt={portfolioConfig.personal.profilePhoto.alt}
+                />
               </div>
             </TiltSurface>
 
-            {/* Floating Information Card 1 (solid/rgba surface, no backdrop-blur over WebGL) */}
+            {/* Floating Information Cards (solid/rgba surface over WebGL) */}
             <div className="animate-subtle-float mt-4 grid grid-cols-2 gap-3 sm:mt-0 sm:block">
-              <div className="sm:absolute sm:-left-8 sm:top-8 rounded-xl border border-white/12 bg-[#100C16]/95 px-4 py-3 shadow-[0_14px_36px_rgba(0,0,0,0.55)]">
+              <div className="sm:absolute sm:-left-6 sm:top-8 lg:-left-4 xl:-left-8 rounded-xl border border-white/12 bg-[#100C16]/95 px-3.5 py-2.5 sm:px-4 sm:py-3 shadow-[0_14px_36px_rgba(0,0,0,0.55)]">
                 <div className="flex items-center gap-2.5">
                   <GraduationCap className="h-4 w-4 shrink-0 text-[#FF557F]" />
                   <div>
                     <p className="text-[11px] font-medium text-[#A69EAC]">
                       {portfolioConfig.personal.floatingHighlights[0].label}
                     </p>
-                    <p className="text-sm font-semibold text-[#F5F1F7]">
+                    <p className="text-xs sm:text-sm font-semibold text-[#F5F1F7]">
                       {portfolioConfig.personal.floatingHighlights[0].value}
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* Floating Information Card 2 */}
-              <div className="animate-subtle-float-delayed sm:absolute sm:-right-6 sm:bottom-16 rounded-xl border border-white/12 bg-[#100C16]/95 px-4 py-3 shadow-[0_14px_36px_rgba(0,0,0,0.55)]">
+              <div className="animate-subtle-float-delayed sm:absolute sm:-right-4 sm:bottom-16 lg:-right-3 xl:-right-6 rounded-xl border border-white/12 bg-[#100C16]/95 px-3.5 py-2.5 sm:px-4 sm:py-3 shadow-[0_14px_36px_rgba(0,0,0,0.55)]">
                 <div className="flex items-center gap-2.5">
                   <Code2 className="h-4 w-4 shrink-0 text-[#9272FF]" />
                   <div>
                     <p className="text-[11px] font-medium text-[#A69EAC]">
                       {portfolioConfig.personal.floatingHighlights[1].label}
                     </p>
-                    <p className="text-sm font-semibold text-[#F5F1F7]">
+                    <p className="text-xs sm:text-sm font-semibold text-[#F5F1F7]">
                       {portfolioConfig.personal.floatingHighlights[1].value}
                     </p>
                   </div>

@@ -59,24 +59,48 @@ export function Navbar() {
           : 'bg-transparent border-b border-transparent'
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-8 px-5 sm:px-8">
-        {/* Zone 1: Brand Wordmark */}
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-4 sm:px-8 2xl:max-w-7xl">
+        {/* Zone 1: Animated VN Brand Mark */}
         <a
           href="#home"
           onClick={(e) => {
             e.preventDefault();
             scrollToSection('home');
           }}
-          className="font-display text-xl font-bold tracking-tight text-[#F5F1F7] whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FF557F]"
+          className="group inline-flex items-center gap-1.5 font-display text-xl font-bold tracking-tight whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FF557F]"
           aria-label="Vignesh Nalla Home"
         >
-          <span className="bg-gradient-to-r from-[#FF557F] via-[#C44D9E] to-[#9272FF] bg-clip-text text-transparent">
-            {portfolioConfig.brand.monogram}
-          </span>
+          <svg
+            viewBox="0 0 42 28"
+            className="h-6 w-9 transition-transform duration-200 group-hover:scale-105"
+            fill="none"
+          >
+            <defs>
+              <linearGradient id="nav-vn-grad" x1="2" y1="2" x2="40" y2="26" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#FF557F" />
+                <stop offset="50%" stopColor="#C44D9E" />
+                <stop offset="100%" stopColor="#9272FF" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M4 5L11.5 23L19 5"
+              stroke="url(#nav-vn-grad)"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M24 23V5L37 23V5"
+              stroke="url(#nav-vn-grad)"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </a>
 
         {/* Zone 2: Primary Nav Links */}
-        <nav aria-label="Primary Navigation" className="hidden md:flex items-center gap-6">
+        <nav aria-label="Primary Navigation" className="hidden lg:flex items-center gap-4 xl:gap-6">
           {primaryLinks.map((item) => {
             const isActive = activeSection === item.id;
             return (
@@ -87,7 +111,7 @@ export function Navbar() {
                   e.preventDefault();
                   scrollToSection(item.id);
                 }}
-                className={`relative py-1 text-sm font-medium transition-colors duration-150 whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FF557F] ${
+                className={`relative py-1 text-[13px] xl:text-sm font-medium transition-colors duration-150 whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FF557F] ${
                   isActive ? 'text-[#F5F1F7]' : 'text-[#A69EAC] hover:text-[#F5F1F7]'
                 }`}
               >
@@ -112,7 +136,7 @@ export function Navbar() {
               e.preventDefault();
               scrollToSection('contact');
             }}
-            className={`hidden md:inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-150 whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF557F] ${
+            className={`hidden lg:inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-150 whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF557F] ${
               activeSection === 'contact'
                 ? 'bg-[#FF557F] text-[#09070D]'
                 : 'border border-[#FF557F]/45 bg-[#FF557F]/12 text-[#F5F1F7] hover:bg-[#FF557F] hover:text-[#09070D]'
@@ -124,7 +148,7 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
-            className="inline-flex md:hidden h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-[#100C16] text-[#F5F1F7] hover:border-[#FF557F]/50 focus-visible:outline-2 focus-visible:outline-[#FF557F]"
+            className="inline-flex lg:hidden h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-[#100C16] text-[#F5F1F7] hover:border-[#FF557F]/50 focus-visible:outline-2 focus-visible:outline-[#FF557F]"
             aria-expanded={mobileMenuOpen}
             aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
           >
@@ -133,11 +157,11 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Navigation Drawer */}
+      {/* Mobile & Tablet Navigation Drawer */}
       {mobileMenuOpen && (
         <nav
           aria-label="Mobile Navigation"
-          className="md:hidden border-t border-white/[0.08] bg-[#09070D]/95 px-5 py-4 backdrop-blur-lg"
+          className="lg:hidden border-t border-white/[0.08] bg-[#09070D]/95 px-5 py-4 backdrop-blur-lg"
         >
           <div className="flex flex-col gap-1">
             {portfolioConfig.navigation.map((item) => {

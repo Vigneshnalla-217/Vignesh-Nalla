@@ -140,9 +140,9 @@ export function ContactSection() {
 
   return (
     <section id="contact" className="relative py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-8 2xl:max-w-7xl">
         <SectionHeader
-          index="07"
+          index="08"
           eyebrow="Contact"
           title={portfolioConfig.contact.heading}
           description={portfolioConfig.contact.subheading}
@@ -251,7 +251,7 @@ export function ContactSection() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Your name"
-                    className="mt-1.5 w-full rounded-xl border border-white/12 bg-[#09070D] px-4 py-3 text-sm text-[#F5F1F7] placeholder:text-[#A69EAC]/50 focus:border-[#FF557F] focus:outline-none"
+                    className="mt-1.5 w-full rounded-xl border border-white/12 bg-[#09070D] px-4 py-3 text-base sm:text-sm text-[#F5F1F7] placeholder:text-[#A69EAC]/50 focus:border-[#FF557F] focus:outline-none"
                   />
                 </div>
 
@@ -267,7 +267,7 @@ export function ContactSection() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="you@example.com"
-                    className="mt-1.5 w-full rounded-xl border border-white/12 bg-[#09070D] px-4 py-3 text-sm text-[#F5F1F7] placeholder:text-[#A69EAC]/50 focus:border-[#9272FF] focus:outline-none"
+                    className="mt-1.5 w-full rounded-xl border border-white/12 bg-[#09070D] px-4 py-3 text-base sm:text-sm text-[#F5F1F7] placeholder:text-[#A69EAC]/50 focus:border-[#9272FF] focus:outline-none"
                   />
                 </div>
               </div>
@@ -284,7 +284,7 @@ export function ContactSection() {
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
                   placeholder="Project idea, collaboration, or hello"
-                  className="mt-1.5 w-full rounded-xl border border-white/12 bg-[#09070D] px-4 py-3 text-sm text-[#F5F1F7] placeholder:text-[#A69EAC]/50 focus:border-[#FF557F] focus:outline-none"
+                  className="mt-1.5 w-full rounded-xl border border-white/12 bg-[#09070D] px-4 py-3 text-base sm:text-sm text-[#F5F1F7] placeholder:text-[#A69EAC]/50 focus:border-[#FF557F] focus:outline-none"
                 />
               </div>
 
@@ -300,7 +300,7 @@ export function ContactSection() {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Write your message..."
-                  className="mt-1.5 w-full resize-y rounded-xl border border-white/12 bg-[#09070D] px-4 py-3 text-sm text-[#F5F1F7] placeholder:text-[#A69EAC]/50 focus:border-[#9272FF] focus:outline-none"
+                  className="mt-1.5 w-full resize-y rounded-xl border border-white/12 bg-[#09070D] px-4 py-3 text-base sm:text-sm text-[#F5F1F7] placeholder:text-[#A69EAC]/50 focus:border-[#9272FF] focus:outline-none"
                 />
               </div>
 

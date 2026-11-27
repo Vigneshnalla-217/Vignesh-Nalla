@@ -58,12 +58,15 @@ npm run dev
 
 Visit `http://localhost:3000`.
 
-### Contact Form Email Delivery
-By default, if no email API key is configured, the contact form never fakes a successful delivery—instead, it provides an instant **Open in Email App** button pre-filled with the visitor's message and a **Copy Message** button.
+### Gmail Notifications (Contact Form)
+By default, if no email credentials are configured, the contact form never fakes a successful delivery—instead, it provides an instant **Open in Email App** button pre-filled with the visitor's message and a **Copy Message** button.
 
-To enable direct server-side email delivery to `vigneshnalla28@gmail.com`:
-1. Create a free account at [Resend](https://resend.com/) and verify your sending domain (`vigneshnalla.com`).
-2. Add `RESEND_API_KEY` and `CONTACT_FROM_EMAIL` to your hosting environment variables (never commit secrets to Git).
+To enable direct server-side Gmail notifications to `vigneshnalla28@gmail.com`:
+1. Enable 2-Step Verification on your Google account and generate a **Gmail App Password**.
+2. Set `GMAIL_USER="vigneshnalla28@gmail.com"` and `GMAIL_APP_PASSWORD="<16-char-app-password>"` in your server environment variables (or alternatively configure `RESEND_API_KEY` + `CONTACT_FROM_EMAIL`).
+
+### Owner-Only Website Analytics
+Click **Owner Analytics** in the footer (or visit `/#owner-analytics`) to access your private analytics dashboard. Set `OWNER_ANALYTICS_PASSCODE` and `ANALYTICS_SESSION_SECRET` in your hosting environment variables, or claim your initial passcode directly in the dashboard on first launch.
 
 ---
 

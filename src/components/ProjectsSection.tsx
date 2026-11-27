@@ -84,9 +84,9 @@ export function ProjectsSection() {
 
   return (
     <section id="projects" className="relative py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-8 2xl:max-w-7xl">
         <SectionHeader
-          index="04"
+          index="05"
           eyebrow="Projects"
           title={portfolioConfig.projects.heading}
           description={portfolioConfig.projects.subheading}

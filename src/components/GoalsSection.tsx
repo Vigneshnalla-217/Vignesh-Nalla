@@ -12,9 +12,9 @@ export function GoalsSection() {
 
   return (
     <section id="goals" className="relative py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-8 2xl:max-w-7xl">
         <SectionHeader
-          index="06"
+          index="07"
           eyebrow="Future Goals"
           title={portfolioConfig.goals.heading}
           description={portfolioConfig.goals.subheading}
